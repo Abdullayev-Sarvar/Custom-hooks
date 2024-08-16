@@ -1,11 +1,12 @@
 import { NavLink, useParams } from 'react-router-dom';
-import { useRecipe } from '../../hooks/useRecipe'
+import { useRecipe } from '../../hooks/useRecipe';
+import '../../components/loader/loader.css';
 
 const Recipe = () => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const { recipe, loading, error } = useRecipe(id);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <div className='loader-wrapper'><div className="loader"></div></div>;
   if (error) return <p>Error: {error}</p>;
   if (!recipe) return <p>Recipe not found.</p>;
 
@@ -14,7 +15,12 @@ const Recipe = () => {
       <div className='flex flex-col items-center'>
         {recipe && (
           <div className='w-full max-w-7xl'>
-            <h1 className='text-3xl font-bold mb-4'>{recipe.name}</h1>
+            <div className='flex justify-between items-center'>
+              <h1 className='text-3xl font-bold mb-4'>{recipe.name}</h1>
+              <button className='py-3 px-8 text-white bg-sky-800 rounded-full hover:opacity-90 max-w-[250px]'>
+                <NavLink to={`/`}>Go Back</NavLink>
+              </button>
+            </div>
             <div className='flex gap-8'>
               <img 
                 src={recipe.image} 
@@ -34,7 +40,6 @@ const Recipe = () => {
                   <li><strong>Servings:</strong> {recipe.cuisine}</li>
                   <li><strong>Difficulty:</strong> {recipe.difficulty}</li>
                 </ul>
-                <button className='py-3 px-8 bg-sky-900 rounded-full hover:opacity-90'><NavLink to={`/`}>Go Back</NavLink></button>
               </div>
             </div>
           </div>
@@ -44,4 +49,4 @@ const Recipe = () => {
   );
 }
 
-export default Recipe
+export default Recipe;

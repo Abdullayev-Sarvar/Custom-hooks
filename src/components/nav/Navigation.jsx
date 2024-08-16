@@ -13,6 +13,7 @@ const Navigation = () => {
                         <img className='w-16 h-16 rounded-full logo' src='https://media.licdn.com/dms/image/D4E0BAQG-i2j7Q2WFIA/company-logo_200_200/0/1694593112031/img_logo?e=2147483647&v=beta&t=o1304VK0Zbh3CBA-8_LNYNZZCNrQjMIBS-nwKrAMzbY' alt="Logo" />
                     </NavLink>
                     <ul className='flex gap-5 text-white nav-list'>
+                        <li className='nav-items'><NavLink to='/'>Home</NavLink></li>
                         <li className='nav-items'><NavLink to='#about'>About</NavLink></li>
                         <li className='nav-items'><NavLink to='#shop'>Shop</NavLink></li>
                         <li className='nav-items'><NavLink to='#service'>Recipes</NavLink></li>
